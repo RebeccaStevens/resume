@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# Private info
+*.private.*
+*private.json
+
+# Build output
+*.pdf

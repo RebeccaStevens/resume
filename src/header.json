@@ -1,0 +1,19 @@
+{
+  "name": "Rebecca Stevens",
+  "title": "Software Engineer | TypeScript & Developer Tooling Specialist",
+  "location": "Wellington, New Zealand (remote-friendly)",
+  "contacts": {
+    "email": {
+      "label": "rebecca.stevens@outlook.co.nz",
+      "href": "mailto:rebecca.stevens@outlook.co.nz"
+    },
+    "github": {
+      "label": "github.com/RebeccaStevens",
+      "href": "https://github.com/RebeccaStevens"
+    },
+    "linkedin": {
+      "label": "linkedin.com/in/rebecca-stevens",
+      "href": "https://www.linkedin.com/in/rebecca-stevens/"
+    }
+  }
+}

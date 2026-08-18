@@ -1,0 +1,212 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colors */
+  --color-text: #1a1a1a;
+  --color-muted: #475569;
+  --color-link: #0b5394;
+  --color-strong: #111;
+  --color-heading: #073763;
+
+  /* Fonts */
+  --font-body: 'Noto Sans', sans-serif;
+  --font-meta: 'Noto Sans', sans-serif;
+
+  /* Font sizes */
+  --font-size-body: 9.2pt;
+  --font-size-h1: 23pt;
+  --font-size-h2: 11pt;
+  --font-size-h3: 9.5pt;
+  --font-size-meta: 8pt;
+
+  /* Spacing */
+  --space-3xs: 0.5mm;
+  --space-xs: 1.0mm;
+  --space-sm: 1.4mm;
+  --space-md: 1.8mm;
+  --space-lg: 2.4mm;
+
+  /* Page layout */
+  --page-padding-block-start: 28mm;
+  --page-padding-block-end: 6mm;
+  --page-padding-block-start-first: 14mm;
+  --page-padding-inline: 16mm;
+  --page-margin-block-end: 15mm;
+
+  /* Headings */
+  --h1-margin-bottom: var(--space-3xs);
+  --h2-color: var(--color-heading);
+  --h2-border-color: var(--color-heading);
+  --h2-padding-bottom: var(--space-3xs);
+  --h2-margin-top: var(--space-lg);
+  --h2-margin-bottom: var(--space-xs);
+  --h3-margin-top: var(--space-sm);
+  --h3-margin-bottom: var(--space-3xs);
+
+  /* Body */
+  --paragraph-margin: var(--space-xs);
+  --list-margin: var(--space-3xs);
+  --list-padding-left: var(--space-lg);
+  --list-item-margin: var(--space-3xs);
+
+  /* Misc */
+  --line-height-body: 1.36;
+  --border-width: 1px;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+
+  margin-bottom: var(--page-margin-block-end);
+  padding-top: var(--page-padding-block-start);
+  padding-right: var(--page-padding-inline);
+  padding-bottom: var(--page-padding-block-end);
+  padding-left: var(--page-padding-inline);
+
+  background-image: var(--bg-svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  @bottom-center {
+    content: "Page " counter(page) " of " counter(pages);
+    font-family: var(--font-meta);
+    font-size: var(--font-size-meta);
+    color: var(--color-muted);
+    vertical-align: middle;
+    margin: 0;
+  }
+}
+
+@page :first {
+  padding-top: var(--page-padding-block-start-first);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 700;
+  text-align: right;
+
+  margin-bottom: var(--h1-margin-bottom);
+}
+
+h1 + p {
+  text-align: justify;
+  text-align-last: justify;
+}
+
+h1 + p a {
+  display: inline-block;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+  color: var(--h2-color);
+
+  border-bottom: var(--border-width) solid var(--h2-border-color);
+  padding-bottom: var(--h2-padding-bottom);
+  margin-top: var(--h2-margin-top);
+  margin-bottom: var(--h2-margin-bottom);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+
+  margin-top: var(--h3-margin-top);
+  margin-bottom: var(--h3-margin-bottom);
+}
+
+p {
+  margin-top: var(--paragraph-margin);
+  margin-bottom: var(--paragraph-margin);
+}
+
+ul {
+  margin-top: var(--list-margin);
+  margin-bottom: var(--list-margin);
+
+  padding-left: var(--list-padding-left);
+}
+
+li {
+  margin-top: var(--list-item-margin);
+  margin-bottom: var(--list-item-margin);
+}
+
+li::marker {
+  color: var(--color-muted);
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+strong {
+  color: var(--color-strong);
+}
+
+code {
+  font-family: 'Consolas', 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 0.88em;
+  background-color: rgba(7, 55, 99, 0.05);
+  color: #073763;
+  padding: 0.2px 1.5px;
+  border-radius: 2px;
+}
+
+h3 + p em {
+  color: var(--color-muted);
+}
+
+/* Prevent headers from separating from content */
+h1,
+h2,
+h3 {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+/* Tether paragraph immediately following an H2 to the next element */
+h2 + p {
+  break-before: avoid;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+/* Tether H3 and its list together */
+h3 + ul,
+h3 + ol,
+h3 + p {
+  break-before: avoid;
+  page-break-before: avoid;
+}
+
+/* Keep entire project lists unified */
+ul,
+ol {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Indent for Key Highlights */
+h2.no-indent + ul {
+  padding-left: var(--space-md);
+}
