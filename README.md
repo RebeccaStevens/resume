@@ -8,7 +8,7 @@ Source files for my resume, written in Markdown and rendered to PDF via [WeasyPr
 
 ## Download
 
-- **Latest PDF:** [Download `Rebecca Stevens - Resume.pdf`](https://github.com/RebeccaStevens/resume/releases/latest/download/Rebecca%20Stevens%20-%20Resume.pdf)
+- **Latest PDF:** [Download `Rebecca Stevens - Resume.pdf`](https://github.com/RebeccaStevens/resume/releases/latest/download/Rebecca.Stevens.-.Resume.pdf)
 - **GitHub Actions Builds:** [Browse Workflow Runs](https://github.com/RebeccaStevens/resume/actions/workflows/build-pdf.yml)
 
 ## Build Locally
