@@ -11,3 +11,4 @@ venv/
 
 # Build output
 *.pdf
+assets/*-optimized.svg

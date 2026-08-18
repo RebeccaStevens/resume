@@ -16,8 +16,8 @@
   --color-heading: #073763;
 
   /* Fonts */
-  --font-body: 'Noto Sans', sans-serif;
-  --font-meta: 'Noto Sans', sans-serif;
+  --font-body: "Noto Sans", sans-serif;
+  --font-meta: "Noto Sans", sans-serif;
 
   /* Font sizes */
   --font-size-body: 9.2pt;
@@ -28,7 +28,7 @@
 
   /* Spacing */
   --space-3xs: 0.5mm;
-  --space-xs: 1.0mm;
+  --space-xs: 1mm;
   --space-sm: 1.4mm;
   --space-md: 1.8mm;
   --space-lg: 2.4mm;
@@ -36,7 +36,7 @@
   /* Page layout */
   --page-padding-block-start: 28mm;
   --page-padding-block-end: 6mm;
-  --page-padding-block-start-first: 14mm;
+  --page-padding-block-start-first: 12mm;
   --page-padding-inline: 16mm;
   --page-margin-block-end: 15mm;
 
@@ -164,7 +164,7 @@ strong {
 }
 
 code {
-  font-family: 'Consolas', 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-family: "Consolas", "Menlo", "Monaco", "Courier New", monospace;
   font-size: 0.88em;
   background-color: rgba(7, 55, 99, 0.05);
   color: #073763;

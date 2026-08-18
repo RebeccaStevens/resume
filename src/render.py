@@ -11,6 +11,11 @@ from typing import Any
 import markdown
 from weasyprint import HTML
 
+try:
+    from optimize_svg import optimize_svg
+except ImportError:
+    from src.optimize_svg import optimize_svg
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 
@@ -18,7 +23,8 @@ HEADER_JSON = SCRIPT_DIR / "header.json"
 HEADER_PRIVATE_JSON = SCRIPT_DIR / "header.private.json"
 BODY_FILE = SCRIPT_DIR / "body.md"
 STYLE_FILE = SCRIPT_DIR / "style.css"
-BG_SVG = PROJECT_ROOT / "assets" / "resume-bg.svg"
+BG_SVG_SOURCE = PROJECT_ROOT / "assets" / "resume-bg.svg"
+BG_SVG_OPTIMIZED = PROJECT_ROOT / "assets" / "resume-bg-optimized.svg"
 DEFAULT_PDF = PROJECT_ROOT / "Rebecca Stevens - Resume.pdf"
 
 DEFAULT_CONTACT_ORDER = ["email", "phone", "github", "linkedin"]
@@ -110,11 +116,24 @@ def load_markdown_content(public_only: bool = False) -> tuple[str, bool]:
     return content, used_private
 
 
+def ensure_optimized_background() -> Path:
+    if not BG_SVG_SOURCE.exists() and not BG_SVG_OPTIMIZED.exists():
+        raise FileNotFoundError(f"Background SVG not found: {BG_SVG_SOURCE}")
+
+    if BG_SVG_SOURCE.exists():
+        source_mtime = BG_SVG_SOURCE.stat().st_mtime
+        opt_mtime = BG_SVG_OPTIMIZED.stat().st_mtime if BG_SVG_OPTIMIZED.exists() else 0.0
+        if not BG_SVG_OPTIMIZED.exists() or source_mtime > opt_mtime:
+            optimize_svg(BG_SVG_SOURCE, BG_SVG_OPTIMIZED)
+
+    return BG_SVG_OPTIMIZED
+
+
 def render(output_path: Path = DEFAULT_PDF, public_only: bool = False) -> None:
     if not STYLE_FILE.exists():
         raise FileNotFoundError(f"Style file not found: {STYLE_FILE}")
-    if not BG_SVG.exists():
-        raise FileNotFoundError(f"Background vector artwork not found: {BG_SVG}")
+
+    bg_svg_path = ensure_optimized_background()
 
     content, used_private = load_markdown_content(public_only=public_only)
 
@@ -125,7 +144,7 @@ def render(output_path: Path = DEFAULT_PDF, public_only: bool = False) -> None:
     )
 
     style_css = STYLE_FILE.read_text(encoding="utf-8")
-    css_vars = f":root {{ --bg-svg: url(\"{file_uri(BG_SVG)}\"); }}"
+    css_vars = f":root {{ --bg-svg: url(\"{file_uri(bg_svg_path)}\"); }}"
 
     document = f"""<!DOCTYPE html>
 <html lang="en">
@@ -148,7 +167,7 @@ def render(output_path: Path = DEFAULT_PDF, public_only: bool = False) -> None:
 
 
 def watch(output_path: Path = DEFAULT_PDF, public_only: bool = False) -> None:
-    watched_files = [HEADER_JSON, HEADER_PRIVATE_JSON, BODY_FILE, STYLE_FILE, BG_SVG]
+    watched_files = [HEADER_JSON, HEADER_PRIVATE_JSON, BODY_FILE, STYLE_FILE, BG_SVG_SOURCE]
     last_mtimes: dict[Path, float] = {f: f.stat().st_mtime if f.exists() else 0.0 for f in watched_files}
 
     render(output_path=output_path, public_only=public_only)

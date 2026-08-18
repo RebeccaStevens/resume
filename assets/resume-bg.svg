@@ -1,1 +1,112 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="210mm" height="297mm" viewBox="0 0 210 297" version="1.1" id="svg1" xml:space="preserve"><defs id="defs1"><linearGradient id="linearGradient2"><stop style="stop-color:#800080;stop-opacity:1;" offset="0" id="stop2" /><stop style="stop-color:#800080;stop-opacity:0;" offset="1" id="stop3" /></linearGradient><linearGradient xlink:href="#linearGradient2" id="linearGradient3" x1="0.84300071" y1="139.25188" x2="49.819141" y2="139.25188" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.2251622,0,0,1.0948063,-46.991062,-4.0929527)" /><mask maskUnits="userSpaceOnUse" id="mask4"><ellipse style="fill:#ffffff;stroke:#800080;stroke-width:3.00015;stroke-dasharray:none" id="ellipse5" cx="47.766872" cy="169.6461" rx="202.91231" ry="151.07895" transform="matrix(0.94203846,-0.33550491,0.34862789,0.93726122,0,0)" /></mask><clipPath id="page-artbox"><rect x="0" y="0" width="210" height="297" /></clipPath></defs><g clip-path="url(#page-artbox)"><g id="layer1" transform="matrix(0.996699,0,0,1.08925,1.94389,0.395769)"><rect style="fill:#e0f2fe;fill-opacity:1;stroke-width:1.49267" id="rect5" width="280.92734" height="339.68326" x="-37.066246" y="-32.495541" /><ellipse style="fill:#ffffff;stroke:#800080;stroke-width:3.00015;stroke-dasharray:none" id="path1" cx="47.766869" cy="169.6461" rx="202.91231" ry="151.07895" transform="matrix(0.94203846,-0.33550491,0.34862789,0.93726122,0,0)" /><rect style="fill:url(#linearGradient3);stroke-width:1.15816" id="rect1" width="55.182156" height="282.76337" x="-37.066246" y="14.325665" mask="url(#mask4)" /></g></g></svg>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  id="resume-background"
+  width="210mm"
+  height="297mm"
+  viewBox="0 0 210 297"
+  xml:space="preserve"
+>
+  <defs id="background-defs">
+    <!-- Styles -->
+    <style>
+      .stop-purple {
+        stop-color: #800080;
+      }
+      #stop-0 {
+        stop-opacity: 0.45;
+      }
+      #stop-1 {
+        stop-opacity: 0.40;
+      }
+      #stop-2 {
+        stop-opacity: 0.12;
+      }
+      #stop-3 {
+        stop-opacity: 0.02;
+      }
+      #stop-4 {
+        stop-opacity: 0;
+      }
+      #bg-base-canvas {
+        fill: #e0f2fe;
+      }
+      .page-ellipse {
+        fill: #ffffff;
+        stroke: #800080;
+        stroke-width: 3;
+      }
+      #bg-gradient-accent-overlay {
+        fill: url(#gradient-purple-accent);
+      }
+    </style>
+
+    <!-- Ellipse shape -->
+    <ellipse
+      id="ellipse-shape"
+      cx="55"
+      cy="178"
+      rx="210"
+      ry="160"
+      transform="rotate(-20)"
+    />
+
+    <!-- Gradient -->
+    <linearGradient
+      id="gradient-purple-accent"
+      x1="0"
+      y1="0"
+      x2="15"
+      y2="0"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop id="stop-0" class="stop-purple" offset="0" />
+      <stop id="stop-1" class="stop-purple" offset="0.15" />
+      <stop id="stop-2" class="stop-purple" offset="0.5" />
+      <stop id="stop-3" class="stop-purple" offset="0.8" />
+      <stop id="stop-4" class="stop-purple" offset="1" />
+    </linearGradient>
+
+    <!-- Ellipse clip -->
+    <clipPath id="clip-page-ellipse">
+      <use
+        id="clip-page-ellipse-use"
+        href="#ellipse-shape"
+      />
+    </clipPath>
+
+    <!-- A4 clip -->
+    <clipPath id="page-artbox">
+      <rect id="page-artbox-rect" x="0" y="0" width="210" height="297" />
+    </clipPath>
+  </defs>
+
+  <g id="page-content-wrapper" clip-path="url(#page-artbox)">
+    <g id="background-layer">
+      <!-- Canvas -->
+      <rect
+        id="bg-base-canvas"
+        x="0"
+        y="0"
+        width="210"
+        height="297"
+      />
+
+      <!-- Ellipse -->
+      <use
+        id="bg-page-body-ellipse"
+        class="page-ellipse"
+        href="#ellipse-shape"
+      />
+
+      <!-- Gradient overlay -->
+      <rect
+        id="bg-gradient-accent-overlay"
+        x="0"
+        y="0"
+        width="210"
+        height="297"
+        clip-path="url(#clip-page-ellipse)"
+      />
+    </g>
+  </g>
+</svg>
