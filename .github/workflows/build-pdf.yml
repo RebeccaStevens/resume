@@ -37,7 +37,7 @@ jobs:
       - name: Set up Node.js & SVGO
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
 
       - name: Install SVGO
         run: npm install -g svgo
