@@ -46,7 +46,7 @@ jobs:
         run: python3 src/render.py
 
       - name: Upload PDF Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Rebecca Stevens - Resume
           path: "Rebecca Stevens - Resume.pdf"
